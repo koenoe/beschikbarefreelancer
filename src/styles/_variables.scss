@@ -1,12 +1,30 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+// Colors
+$primaryColor: #5374F7;
+$primaryHoverColor: #6392FF;
+$primaryActiveColor: #4A7CED;
 
-$body-bg: #1c1c1c;
-$body-color: #ffffff;
 
-$brand-primary: #01ffff;
+$secundairyColor: #FFE9BA;
+$secundairyHoverColor: #FFEECA;
+$secundairyActiveColor: #F9DDA2;
+$secundairyTextColor: #BF744E;
 
-$component-bg: #232323;
-$component-color: $body-color;
-$component-color-mute: #8a8a8a;
+$confirmColor: #38CA5D;
 
-$gutter: 15px;
+$black: #000;
+$white: #fff;
+$gray-1: #697075;
+$gray-3: #C8CCCF;
+$gray-5: #EBEFF2;
+
+// Fonts
+$font-stack: -apple-system, BlinkMacSystemFont, san-serif;
+
+// Shadows
+
+$shadow-1: 0px 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-2: 0px 2px 6px rgba(0, 0, 0, 0.06);
+
+// Border Radius
+
+$mainBorderRadius: 4px;
