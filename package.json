@@ -163,6 +163,7 @@
     },
     "globals": {},
     "rules": {
+      "no-use-before-define": [2, { "functions": false }],
       "import/no-extraneous-dependencies": 0,
       "react/jsx-filename-extension": [
         1,
