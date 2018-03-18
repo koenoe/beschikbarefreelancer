@@ -146,6 +146,10 @@ $check-width: 0.5em;
 .checkmark {
   display: none;
 
+  &.show {
+    display: block;
+  }
+
   &.draw:after {
     animation-duration: 400ms;
     animation-timing-function: ease;

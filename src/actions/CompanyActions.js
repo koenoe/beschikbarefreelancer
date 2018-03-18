@@ -1,12 +1,15 @@
 import * as types from '../constants/ActionTypes';
 
-export default {
-  register,
-};
+// export default {
+//   register,
+// };
 
-function register(email) {
+export default function register(email) {
   return (dispatch) => {
+    // console.log('register:', email);
     dispatch(request({ email }));
+
+    // TODO: create company service here for register call to Campaign Monitor
 
     // userService.login(username, password)
     //   .then(
