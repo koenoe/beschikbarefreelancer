@@ -27,7 +27,8 @@
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.9",
     "redux": "3.7.2",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "reselect": "3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "8.0.0",
@@ -163,7 +164,12 @@
     },
     "globals": {},
     "rules": {
-      "no-use-before-define": [2, { "functions": false }],
+      "no-use-before-define": [
+        2,
+        {
+          "functions": false
+        }
+      ],
       "import/no-extraneous-dependencies": 0,
       "react/jsx-filename-extension": [
         1,
