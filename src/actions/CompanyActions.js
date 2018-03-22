@@ -1,30 +1,15 @@
 import * as types from '../constants/ActionTypes';
+import { registerApi } from '../utils/CompanyUtils';
 
-// export default {
-//   register,
-// };
+export const register = email => async (dispatch) => {
+  // console.log('register:', email);
+  dispatch(request({ email }));
 
-export default function register(email) {
-  return (dispatch) => {
-    // console.log('register:', email);
-    dispatch(request({ email }));
+  await registerApi(email);
 
-    // TODO: create company service here for register call to Campaign Monitor
+  function request() { return { type: types.REGISTER_COMPANY_REQUEST, email }; }
+  // function success(company) { return { type: types.REGISTER_COMPANY_SUCCESS, company }; }
+  // function failure(error) { return { type: types.REGISTER_COMPANY_FAILURE, error }; }
+};
 
-    // userService.login(username, password)
-    //   .then(
-    //     (user) => {
-    //       dispatch(success(user));
-    //       history.push('/');
-    //     },
-    //     (error) => {
-    //       dispatch(failure(error));
-    //       dispatch(alertActions.error(error));
-    //     },
-    //   );
-
-    function request() { return { type: types.REGISTER_COMPANY_REQUEST, email }; }
-    // function success(company) { return { type: types.REGISTER_COMPANY_SUCCESS, company }; }
-    // function failure(error) { return { type: types.REGISTER_COMPANY_FAILURE, error }; }
-  };
-}
+export default register;

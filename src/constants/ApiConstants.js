@@ -1,7 +1,19 @@
-// const API_URL = process.env.API_URL || 'http://localhost:8001';
+// const API_URL = 'http://api.foobar.com';
 
-// export const SEARCH_ARTIST_URL = `${API_URL}/search/artist?q=:keyword&offset=0&limit=5`;
 // export const ARTIST_URL = `${API_URL}/artist/:id`;
 // export const ARTIST_ALBUMS_URL = `${ARTIST_URL}/albums?limit=5`;
-// export const ALBUM_URL = `${API_URL}/album/:id`;
-// export const ALBUM_TRACKS_URL = `${ALBUM_URL}/tracks`;
+
+export const CM_SECURE_SUBSCRIBE_LINK = 'https://createsend.com//t/getsecuresubscribelink';
+
+export const CM_COMPANY_DATA_ID = 'A61C50BEC994754B1D79C5819EC1255C869B54CD994DDB5A6FA5C7B116702EAAA7FAA6507BDF323439FAB011DD0890B8ADA01779A5310DB4D43DE8949E9F1727';
+export const CM_COMPANY_FIELD_EMAIL = 'cm-etruhy-etruhy';
+
+export const CM_FREELANCER_DATA_ID = 'A61C50BEC994754B1D79C5819EC1255C000303AEC370330AE818EFEA11A3103546310B13357C51C95B0A51EFFBB6D35576488A5DD84836EFFD9FB17E02CAD2C9';
+export const CM_FREELANCER_FIELD_EMAIL = 'cm-syhkld-syhkld';
+export const CM_FREELANCER_FIELD_NAME = 'cm-name';
+export const CM_FREELANCER_FIELD_SPECIALISM = 'cm-f-jjljhyj';
+export const CM_FREELANCER_FIELD_CATEGORY = 'cm-f-jjljhyt';
+export const CM_FREELANCER_FIELD_PITCH = 'cm-f-jjljhyi';
+export const CM_FREELANCER_FIELD_LINK_ONE = 'cm-f-jjljhyd';
+export const CM_FREELANCER_FIELD_LINK_TWO = 'cm-f-jjljhyh';
+export const CM_FREELANCER_FIELD_LINK_THREE = 'cm-f-jjljhyk';

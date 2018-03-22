@@ -1,16 +1,22 @@
-/* global fetch */
-
 export const callApi = (url, options) =>
   fetch(url, options)
     .then(
-      response => (response.ok
-        ? response.json()
-        : Promise.reject(response.text())
-      ),
+      (response) => {
+        if (!response.ok) {
+          return Promise.reject(response.statusText);
+        }
+        const contentType = response.headers.get('Content-Type') || '';
+        if (contentType.indexOf('json') !== -1) {
+          return response.json();
+        } else if (contentType.indexOf('text') !== -1) {
+          return response.text();
+        }
+        return response;
+      },
       error => Promise.reject(error),
     )
     .then(
-      json => ({ json }),
+      result => ({ result }),
       error => ({ error }),
     )
     .catch(error => ({ error }));
