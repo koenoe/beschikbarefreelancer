@@ -1,8 +1,9 @@
-import { createStore, compose, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from '../reducers';
 
@@ -17,7 +18,12 @@ function configureStore(initialState) {
   if (process.env.NODE_ENV === 'development') {
     middlewares.unshift(reduxImmutableStateInvariant());
   }
-  const store = createStore(rootReducer, initialState, compose(applyMiddleware(...middlewares)));
+  const composeEnhancers = composeWithDevTools({});
+  const store = createStore(
+    rootReducer,
+    initialState,
+    composeEnhancers(applyMiddleware(...middlewares)),
+  );
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
