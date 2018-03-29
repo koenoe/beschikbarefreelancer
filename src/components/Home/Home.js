@@ -21,7 +21,9 @@ function Home() {
         </p>
         <RegisterCompanyContainer />
         <div className="clear" />
-        <a href="https://emieljanson.typeform.com/to/XFteTs" className="freelancer"><strong>Freelancer?</strong> Klik hier om je beschikbaarheid door te geven</a>
+        <a href="https://emieljanson.typeform.com/to/XFteTs" className="freelancer">
+          <strong>Freelancer?</strong> Klik hier om je beschikbaarheid door te geven
+        </a>
       </div>
     </div>
   );
