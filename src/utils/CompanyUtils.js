@@ -1,27 +1,35 @@
-// import {
-//   CM_SECURE_SUBSCRIBE_LINK,
-//   CM_COMPANY_DATA_ID,
-// } from '../constants/ApiConstants';
+import querystring from 'querystring';
 
-// import { callApi } from './ApiUtils';
+import {
+  CM_COMPANY_DATA_ID,
+  CM_COMPANY_FIELD_EMAIL,
+  CM_SECURE_SUBSCRIBE_LINK,
+} from '../constants/ApiConstants';
+import { callApi } from './ApiUtils';
 
-// export const registerApi = async (email) => {
-//   const options = {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-//     body: `data=${CM_COMPANY_DATA_ID}`,
-//   };
 
-//   console.log('Email:', email);
+const generateSubscribeLink = async () => {
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `data=${CM_COMPANY_DATA_ID}`,
+  };
+  const { result } = await callApi(CM_SECURE_SUBSCRIBE_LINK, options);
+  return result;
+};
 
-//   try {
-//     const { result } = await callApi(CM_SECURE_SUBSCRIBE_LINK, options);
+export const registerApi = async (email) => {
+  const form = {};
+  form[CM_COMPANY_FIELD_EMAIL] = email;
 
-//     const options = {};
-//     const { result } = await callApi(result, options);
-//   } catch (error) {
-//     console.error('Error:', error);
-//   }
-// };
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: querystring.stringify(form),
+  };
 
-// export default registerApi;
+  const subscribeLink = await generateSubscribeLink();
+  await callApi(subscribeLink, options);
+};
+
+export default registerApi;

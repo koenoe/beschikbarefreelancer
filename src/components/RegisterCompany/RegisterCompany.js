@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 import './RegisterCompany.scss';
 
 const defaultProps = {
-  company: null,
-  error: {},
+  error: null,
   isLoading: false,
+  success: null,
 };
 
 const propTypes = {
-  company: PropTypes.shape({}),
   error: PropTypes.shape({}),
   isLoading: PropTypes.bool,
+  success: PropTypes.bool,
   onRegisterCompany: PropTypes.func.isRequired,
 };
 
@@ -19,7 +19,9 @@ class RegisterCompany extends Component {
   constructor() {
     super();
 
-    this.state = { email: '' };
+    this.state = {
+      email: '',
+    };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -44,22 +46,22 @@ class RegisterCompany extends Component {
   render() {
     const { email } = this.state;
     const {
-      company,
       error,
       isLoading,
+      success,
     } = this.props;
 
     return (
       <div className={`form ${isLoading ? 'form-is-loading' : ''}`}>
         <h4>Ontvang het laatste overzicht met beschikbare freelancers</h4>
-        {company ? (
+        {success ? (
           // REGISTER_COMPANY_SUCCESS
           <form>
             <input
               value="Bedankt, je staat op de lijst"
               type="email"
             />
-            <button type="submit"><div className="checkmark draw show" /></button>
+            <button disabled type="submit" className="success"><div className="checkmark draw show" /></button>
           </form>
         ) : (
           <form onSubmit={this.onSubmit}>
@@ -71,7 +73,7 @@ class RegisterCompany extends Component {
               placeholder="Jouw email"
               required
             />
-            <button type="submit"><div className="checkmark draw" /> Aanmelden </button>
+            <button disabled={isLoading} type="submit"><div className="checkmark draw" />Aanmelden</button>
           </form>
         )}
         {error &&

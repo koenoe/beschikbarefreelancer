@@ -8,15 +8,15 @@ const RegisterCompanyContainer = props => <RegisterCompany {...props} />;
 
 const mapStateToProps = (state) => {
   const {
-    company,
     error,
     isLoading,
+    success,
   } = state.registerCompany;
 
   return {
-    company,
     error,
     isLoading,
+    success,
   };
 };
 

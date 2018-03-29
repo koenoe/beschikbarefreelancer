@@ -133,11 +133,21 @@ button {
   background-color: $primaryColor;
   color: $white;
   box-shadow: $shadow-1, $shadow-2;
-}
 
-button:hover {
-  background-color: $primaryHoverColor;
-  cursor:pointer;
+  &:hover {
+    background-color: $primaryHoverColor;
+    cursor: pointer;
+  }
+
+  &.success,
+  &.success:hover {
+    background: #000;
+    color: #000;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 $check-height: 1em;
@@ -165,7 +175,7 @@ $check-width: 0.5em;
     border-right: 3px solid $white;
     border-top: 3px solid $white;
     content: '';
-    left: 70px;
+    left: 19px;
     top: 32px;
     position: absolute;
   }
@@ -217,7 +227,7 @@ a.freelancer:hover {
   border-radius: $mainBorderRadius;
 }
 
-bold {
+strong {
   font-weight: 600;
 }
 
@@ -282,7 +292,7 @@ bold {
 
 @media (max-width: 420px) {
   .freelancer {
-  display: block;
-  text-align: center;
+    display: block;
+    text-align: center;
   }
 }

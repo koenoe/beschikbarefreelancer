@@ -3,6 +3,7 @@ import * as types from '../constants/ActionTypes';
 const initialState = {
   error: null,
   isLoading: false,
+  success: null,
 };
 
 export default function (state = initialState, action) {
@@ -16,7 +17,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        company: action.company,
+        success: action.success,
       };
     case types.REGISTER_COMPANY_FAILURE:
       return {
