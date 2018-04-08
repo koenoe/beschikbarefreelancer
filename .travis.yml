@@ -1,4 +1,8 @@
 language: node_js
+cache: yarn
 node_js:
-  - "8.9.4"
-script: npm run test
+  - "8.11"
+script:
+  - yarn run flow
+  - yarn run lint
+  - yarn run test
