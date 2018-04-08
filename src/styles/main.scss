@@ -16,6 +16,7 @@ html, body {
 #wrapper {
   padding: 0em 2em;
   height: 100%;
+  display: block;
 }
 
 #content {
@@ -83,7 +84,6 @@ p {
 }
 
 form {
-  display: -webkit-flex;
   display: flex;
   max-width: 540px;
   padding-right: 32px;
@@ -101,7 +101,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 input {
@@ -133,11 +133,21 @@ button {
   background-color: $primaryColor;
   color: $white;
   box-shadow: $shadow-1, $shadow-2;
-}
 
-button:hover {
-  background-color: $primaryHoverColor;
-  cursor:pointer;
+  &:hover {
+    background-color: $primaryHoverColor;
+    cursor: pointer;
+  }
+
+  &.success,
+  &.success:hover {
+    background: #000;
+    color: #000;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 $check-height: 1em;
@@ -145,6 +155,10 @@ $check-width: 0.5em;
 
 .checkmark {
   display: none;
+
+  &.show {
+    display: block;
+  }
 
   &.draw:after {
     animation-duration: 400ms;
@@ -161,7 +175,7 @@ $check-width: 0.5em;
     border-right: 3px solid $white;
     border-top: 3px solid $white;
     content: '';
-    left: 70px;
+    left: 19px;
     top: 32px;
     position: absolute;
   }
@@ -213,7 +227,7 @@ a.freelancer:hover {
   border-radius: $mainBorderRadius;
 }
 
-bold {
+strong {
   font-weight: 600;
 }
 
@@ -278,7 +292,7 @@ bold {
 
 @media (max-width: 420px) {
   .freelancer {
-  display: block;
-  text-align: center;
+    display: block;
+    text-align: center;
   }
 }

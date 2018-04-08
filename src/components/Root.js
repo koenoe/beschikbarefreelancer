@@ -1,32 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import { ConnectedRouter } from 'react-router-redux';
 import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
+import type { Store } from 'redux';
+import type { BrowserHistory } from 'history/createBrowserHistory';
+
 import Home from './Home';
 
-function Root(props) {
-  const { store, history } = props;
-  return (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <div id="wrapper">
-          <div id="content">
-            <Route path="/" component={Home} />
-          </div>
-        </div>
-      </ConnectedRouter>
-    </Provider>
-  );
-}
-
-// Only disable the rule forbid-prop-types here,
-// because we're using third party stuff,
-// so impossible to know what the exact shapes are
-Root.propTypes = {
-  store: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+type Props = {
+  store: Store<any, any>, // FIXME: State, Action
+  history: BrowserHistory,
 };
 
-export default Root;
+export default ({ store, history }: Props) => (
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <div id="wrapper">
+        <div id="content">
+          <Route path="/" component={Home} />
+        </div>
+      </div>
+    </ConnectedRouter>
+  </Provider>
+);

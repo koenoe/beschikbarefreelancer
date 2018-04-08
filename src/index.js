@@ -1,21 +1,22 @@
+// @flow
 import 'babel-polyfill';
-
-import React from 'react';
+import * as React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
+import type { Store } from 'redux';
+
 import { configureStore, history } from './store/configureStore';
 import Root from './components/Root';
-
 import './styles/main.scss';
 
-const store = configureStore();
+const store: Store<any, any> = configureStore(); // FIXME: State, Action
 
 render(
   <AppContainer>
     <Root store={store} history={history} />
   </AppContainer>,
-  document.getElementById('root'),
+  (document.getElementById('root'): any),
 );
 
 if (module.hot) {
@@ -25,7 +26,7 @@ if (module.hot) {
       <AppContainer>
         <NewRoot store={store} history={history} />
       </AppContainer>,
-      document.getElementById('root'),
+      (document.getElementById('root'): any),
     );
   });
 }

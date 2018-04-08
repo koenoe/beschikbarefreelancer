@@ -1,0 +1,20 @@
+[ignore]
+.*/node_modules/*
+dist
+
+[include]
+src/**/*.js
+
+[libs]
+flow-typed
+flow
+
+[lints]
+
+[options]
+; Extensions
+module.file_ext=.css
+module.file_ext=.scss
+module.file_ext=.js
+
+[strict]

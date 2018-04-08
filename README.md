@@ -7,21 +7,23 @@ Jest uses Watchman by default, to install: `brew install watchman`
 ### EditorConfig
 Consistent coding styles between different editors and IDEs. I use VSCode, but other devs might prefer Sublime or Atom.
 ### NVM
-Make sure everybody is on the same Node version by using a Node Version Manager.
-At time of writing LTS is 8.9.4, so let's stick to that.
-### NPM
-I enable `save-exact` by default, so all devs are using the exact same version of used packages.
+Make sure everybody is on the same Node version by using [Node Version Manager](https://github.com/creationix/nvm).
+```
+nvm use
+```
+### Yarn
+Make sure to install [yarn](https://github.com/yarnpkg/yarn)
 
 ## Installation
 ### Run app
 ```
-npm start
+yarn start
 ```
 ### Build app
 ```
-npm run build
+yarn run build
 ```
 ### Test app
 ```
-npm test
+yarn test
 ```
