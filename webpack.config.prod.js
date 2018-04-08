@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -60,6 +61,10 @@ module.exports = {
       inject: true,
       // Note that you can add custom options here if you need to handle custom logic in index.html
       foo: 'bar',
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'allChunks',
     }),
   ],
   module: {
@@ -134,6 +139,7 @@ module.exports = {
         test: /(\.css|\.scss|\.sass)$/,
         use: ExtractTextPlugin.extract({
           use: [
+            'css-modules-flow-types-loader',
             {
               loader: 'css-loader',
               options: {

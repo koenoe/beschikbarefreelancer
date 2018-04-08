@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 
@@ -33,6 +34,10 @@ module.exports = {
         collapseWhitespace: true,
       },
       inject: true,
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'allChunks',
     }),
   ],
   module: {
@@ -97,6 +102,7 @@ module.exports = {
         test: /(\.css|\.scss|\.sass)$/,
         use: [
           'style-loader',
+          'css-modules-flow-types-loader',
           {
             loader: 'css-loader',
             options: {

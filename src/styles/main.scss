@@ -16,6 +16,7 @@ html, body {
 #wrapper {
   padding: 0em 2em;
   height: 100%;
+  display: block;
 }
 
 #content {
@@ -83,7 +84,6 @@ p {
 }
 
 form {
-  display: -webkit-flex;
   display: flex;
   max-width: 540px;
   padding-right: 32px;
@@ -101,7 +101,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 input {
