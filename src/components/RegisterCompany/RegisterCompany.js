@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import classNames from 'classnames';
+
 import './RegisterCompany.scss';
+
+// const cx = classNames.bind(styles);
 
 const defaultProps = {
   error: null,
@@ -52,7 +56,13 @@ class RegisterCompany extends Component {
     } = this.props;
 
     return (
-      <div className={`form ${isLoading ? 'form-is-loading' : ''}`}>
+      <div className={
+        classNames({
+          form: true,
+          'form-is-loading': isLoading,
+        })
+      }
+      >
         <h4>Ontvang het laatste overzicht met beschikbare freelancers</h4>
         {success ? (
           // REGISTER_COMPANY_SUCCESS

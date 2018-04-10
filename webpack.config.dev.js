@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 
@@ -25,8 +26,14 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
       __DEV__: true,
     }),
-    // new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    // Generate an external css file with a hash in the filename
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
     new HtmlWebpackPlugin({ // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/index.html',
       minify: {
@@ -99,32 +106,63 @@ module.exports = {
         ],
       },
       {
-        test: /(\.css|\.scss|\.sass)$/,
+        test: /\.(scss|css)$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-modules-flow-types-loader',
           {
             loader: 'css-loader',
             options: {
+              // modules: true,
               sourceMap: true,
             },
-          }, {
+          },
+          {
             loader: 'postcss-loader',
             options: {
+              autoprefixer: {
+                browsers: ['last 2 versions'],
+              },
               plugins: () => [
                 autoprefixer,
               ],
-              sourceMap: true,
             },
-          }, {
+          },
+          {
             loader: 'sass-loader',
             options: {
-              includePaths: [path.resolve(__dirname, 'src', 'scss')],
               sourceMap: true,
             },
           },
         ],
       },
+      // {
+      //   test: /(\.css|\.scss|\.sass)$/,
+      //   use: [
+      //     'style-loader',
+      //     'css-modules-flow-types-loader',
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         sourceMap: true,
+      //       },
+      //     }, {
+      //       loader: 'postcss-loader',
+      //       options: {
+      //         plugins: () => [
+      //           autoprefixer,
+      //         ],
+      //         sourceMap: true,
+      //       },
+      //     }, {
+      //       loader: 'sass-loader',
+      //       options: {
+      //         includePaths: [path.resolve(__dirname, 'src', 'scss')],
+      //         sourceMap: true,
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
 };
