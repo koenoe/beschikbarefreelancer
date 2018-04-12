@@ -4,7 +4,7 @@ import {
   CM_COMPANY_DATA_ID,
   CM_COMPANY_FIELD_EMAIL,
   CM_SECURE_SUBSCRIBE_LINK,
-} from '../constants/ApiConstants';
+} from 'constants/ApiConstants';
 import { callApi } from './ApiUtils';
 
 

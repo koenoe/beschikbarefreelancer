@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import RegisterCompanyContainer from 'containers/RegisterCompanyContainer';
 import Home from './Home';
-import RegisterCompanyContainer from '../../containers/RegisterCompanyContainer';
 
 describe('<Home />', () => {
   const props = {};

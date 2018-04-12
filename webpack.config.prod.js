@@ -10,6 +10,8 @@ const autoprefixer = require('autoprefixer');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+const projectRoot = path.resolve(__dirname);
+
 module.exports = {
   mode: 'production',
   optimization: {
@@ -20,12 +22,17 @@ module.exports = {
   },
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
+    modules: [
+      // projectRoot,
+      path.join(projectRoot, 'src'),
+      path.join(projectRoot, 'node_modules'),
+    ],
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
-  entry: path.resolve(__dirname, 'src/index'),
+  entry: path.join(projectRoot, 'src', 'index.js'),
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(projectRoot, 'dist'),
     publicPath: '/',
     filename: '[name].[chunkhash].js',
   },
@@ -49,7 +56,7 @@ module.exports = {
 
     // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: path.join(projectRoot, 'src', 'index.html'),
       // favicon: 'src/favicon.ico',
       minify: {
         removeComments: true,
@@ -156,6 +163,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
+              sourceMap: true,
               autoprefixer: {
                 browsers: ['last 2 versions'],
               },
@@ -170,37 +178,15 @@ module.exports = {
               sourceMap: true,
             },
           },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              // resources: [path.join(projectRoot, 'styles/variables.scss')],
+              resources: ['./src/styles/variables.scss'],
+            },
+          },
         ],
       },
-      // {
-      //   test: /(\.css|\.scss|\.sass)$/,
-      //   use: ExtractTextPlugin.extract({
-      //     use: [
-      //       'css-modules-flow-types-loader',
-      //       {
-      //         loader: 'css-loader',
-      //         options: {
-      //           minimize: true,
-      //           sourceMap: true,
-      //         },
-      //       }, {
-      //         loader: 'postcss-loader',
-      //         options: {
-      //           plugins: () => [
-      //             autoprefixer,
-      //           ],
-      //           sourceMap: true,
-      //         },
-      //       }, {
-      //         loader: 'sass-loader',
-      //         options: {
-      //           includePaths: [path.resolve(__dirname, 'src', 'scss')],
-      //           sourceMap: true,
-      //         },
-      //       },
-      //     ],
-      //   }),
-      // },
     ],
   },
 };

@@ -25,6 +25,13 @@
     "jest": true
   },
   "globals": {},
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.dev.js"
+      }
+    }
+  },
   "rules": {
     "no-use-before-define": [
       2,

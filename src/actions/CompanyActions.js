@@ -1,5 +1,5 @@
-import * as types from '../constants/ActionTypes';
-import { registerApi } from '../utils/CompanyUtils';
+import * as types from 'constants/ActionTypes';
+import { registerApi } from 'utils/CompanyUtils';
 
 const registerRequest = email => ({
   type: types.REGISTER_COMPANY_REQUEST,

@@ -7,4 +7,5 @@ module.exports = {
     'raf/polyfill',
     './src/test-setup.js',
   ],
+  modulePaths: ['src'],
 };

@@ -1,7 +1,7 @@
 // import PropTypes from 'prop-types';
 import React from 'react';
 
-import RegisterCompanyContainer from '../../containers/RegisterCompanyContainer';
+import RegisterCompanyContainer from 'containers/RegisterCompanyContainer';
 import illustration from './img/illustration.png';
 import './Home.scss';
 
