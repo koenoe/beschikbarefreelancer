@@ -1818,6 +1818,10 @@ clean-css@4.1.x:
   dependencies:
     source-map "0.5.x"
 
+clear@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/clear/-/clear-0.0.1.tgz#e5186e229d99448179c130311b6f9d30bff6b0ba"
+
 cli-boxes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
@@ -1837,6 +1841,10 @@ cli-cursor@^2.1.0:
 cli-spinners@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-0.1.2.tgz#bb764d88e185fb9e1e6a2a1f19772318f605e31c"
+
+cli-spinners@^1.0.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-1.3.1.tgz#002c1990912d0d59580c93bd36c056de99e4259a"
 
 cli-table@^0.3.1:
   version "0.3.1"
@@ -3449,6 +3457,16 @@ flatten@^1.0.2:
 flow-bin@0.69.0:
   version "0.69.0"
   resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.69.0.tgz#053159a684a6051fcbf0b71a2eb19a9679082da6"
+
+flow-bro@0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/flow-bro/-/flow-bro-0.4.3.tgz#a446514c396079804aaf5b4c31af6acacc49a1da"
+  dependencies:
+    clear "0.0.1"
+    cli-table "^0.3.1"
+    commander "^2.9.0"
+    ora "^1.2.0"
+    throttled-promise "^1.0.1"
 
 flow-parser@^0.*:
   version "0.69.0"
@@ -6402,6 +6420,15 @@ ora@^0.2.3:
     cli-spinners "^0.1.2"
     object-assign "^4.0.1"
 
+ora@^1.2.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/ora/-/ora-1.4.0.tgz#884458215b3a5d4097592285f93321bb7a79e2e5"
+  dependencies:
+    chalk "^2.1.0"
+    cli-cursor "^2.1.0"
+    cli-spinners "^1.0.1"
+    log-symbols "^2.1.0"
+
 os-browserify@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/os-browserify/-/os-browserify-0.3.0.tgz#854373c7f5c2315914fc9bfc6bd8238fdda1ec27"
@@ -8601,6 +8628,10 @@ thenify-all@^1.0.0:
 throat@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
+
+throttled-promise@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/throttled-promise/-/throttled-promise-1.0.1.tgz#22b9b31bb260f44108db8184d20fb21f1215b5e4"
 
 through2@^2.0.0:
   version "2.0.3"
