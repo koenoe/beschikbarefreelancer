@@ -176,13 +176,21 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
+              includePaths: [
+                path.join(projectRoot, 'src'),
+                path.join(projectRoot, 'node_modules'),
+              ],
             },
           },
           {
             loader: 'sass-resources-loader',
             options: {
-              // resources: [path.join(projectRoot, 'styles/variables.scss')],
-              resources: ['./src/styles/variables.scss'],
+              resources: [
+                './node_modules/bootstrap/scss/_functions.scss',
+                './node_modules/bootstrap/scss/_variables.scss',
+                './node_modules/bootstrap/scss/_mixins.scss',
+                './src/styles/variables.scss',
+              ],
             },
           },
         ],

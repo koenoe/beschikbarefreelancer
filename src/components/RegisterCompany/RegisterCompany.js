@@ -58,6 +58,7 @@ class RegisterCompany extends Component {
     return (
       <div className={
         classNames({
+          registerCompany: true,
           form: true,
           'form-is-loading': isLoading,
         })

@@ -1,3 +1,6 @@
+@import "variables";
+@import "bootstrap/scss/bootstrap";
+
 html, body {
   font-family: $font-stack;
   margin: 0;
@@ -49,6 +52,10 @@ img.mobile {
 
 #content.succes {
   text-align: center;
+
+  p {
+    max-width: 100%;
+  }
 }
 
 h1 {
@@ -75,10 +82,6 @@ p {
   line-height: 1.5em;
   max-width: 1000px;
   margin: 0 0 2em 0;
-}
-
-#content.succes p{
-  max-width: 100%;
 }
 
 form {
@@ -147,9 +150,6 @@ button {
     cursor: not-allowed;
   }
 }
-
-$check-height: 1em;
-$check-width: 0.5em;
 
 .checkmark {
   display: none;
