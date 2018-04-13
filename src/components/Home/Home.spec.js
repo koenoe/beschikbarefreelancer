@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -5,7 +6,7 @@ import RegisterCompanyContainer from 'containers/RegisterCompanyContainer';
 import Home from './Home';
 
 describe('<Home />', () => {
-  const props = {};
+  const props:any = {};
 
   let wrapper;
 

@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+// @flow
 import React from 'react';
 
 import RegisterCompanyContainer from 'containers/RegisterCompanyContainer';
