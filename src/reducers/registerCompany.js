@@ -1,25 +1,36 @@
-import * as types from 'constants/ActionTypes';
+// @flow
+import {
+  REGISTER_COMPANY_REQUEST,
+  REGISTER_COMPANY_FAILURE,
+  REGISTER_COMPANY_SUCCESS,
+} from 'actions/CompanyActions';
 
-const initialState = {
-  error: null,
+import type { CompanyAction } from 'actions/CompanyActions';
+
+type State = {|
+  +error?: any,
+  +isLoading: boolean,
+  +success?: boolean,
+|};
+
+const initialState: State = {
   isLoading: false,
-  success: null,
 };
 
-export default function (state = initialState, action) {
+export default function (state: State = initialState, action: CompanyAction) {
   switch (action.type) {
-    case types.REGISTER_COMPANY_REQUEST:
+    case REGISTER_COMPANY_REQUEST:
       return {
         ...state,
         isLoading: true,
       };
-    case types.REGISTER_COMPANY_SUCCESS:
+    case REGISTER_COMPANY_SUCCESS:
       return {
         ...state,
         isLoading: false,
         success: action.success,
       };
-    case types.REGISTER_COMPANY_FAILURE:
+    case REGISTER_COMPANY_FAILURE:
       return {
         ...state,
         isLoading: false,
