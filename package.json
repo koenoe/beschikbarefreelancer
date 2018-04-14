@@ -9,7 +9,7 @@
     "build:open": "yarn build && http-server ./dist -p 4000 -o",
     "clean-dist": "rimraf ./dist && mkdir dist",
     "flow": "flow check",
-    "flow:cover": "flow-coverage-report  -i 'src/**/*.js'",
+    "flow:cover": "flow-coverage-report -i 'src/**/*.js' --threshold 70",
     "flow:watch": "flow-bro watch",
     "lint": "esw webpack.config.* src --color",
     "lint:watch": "yarn lint --watch",
