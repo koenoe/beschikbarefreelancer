@@ -14,14 +14,15 @@ import type { OwnProps, DispatchProps } from 'components/RegisterCompany/Registe
 
 const mapStateToProps: ((State) => OwnProps) = createSelector(
   registerCompanySelector,
-  (props: OwnProps) => {
-    const { error, isLoading, success } = props;
-    return {
-      error,
-      isLoading,
-      success,
-    };
-  },
+  ({
+    error,
+    isLoading,
+    success,
+  }: OwnProps) => ({
+    error,
+    isLoading,
+    success,
+  }),
 );
 
 const mapDispatchToProps = (dispatch: Dispatch<*>): DispatchProps => ({
