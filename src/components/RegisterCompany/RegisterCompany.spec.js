@@ -13,11 +13,7 @@ describe('<RegisterCompany />', () => {
   };
 
   beforeEach(() => {
-    const { onRegisterCompany, isLoading } = props;
-    wrapper = shallow(<RegisterCompany
-      isLoading={isLoading}
-      onRegisterCompany={onRegisterCompany}
-    />);
+    wrapper = shallow(<RegisterCompany {...(props: any)} />);
   });
 
   it('should contain .form', () => {
