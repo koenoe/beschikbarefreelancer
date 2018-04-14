@@ -23,7 +23,7 @@ export type CompanyAction =
   | RegisterSuccessAction;
 
 type Dispatch = ReduxDispatch<CompanyAction>;
-// type ThunkAction = (dispatch: Dispatch) => any;
+type ThunkAction = (dispatch: Dispatch) => any;
 
 export const REGISTER_COMPANY_REQUEST: 'REGISTER_COMPANY_REQUEST' = 'REGISTER_COMPANY_REQUEST';
 export const REGISTER_COMPANY_FAILURE: 'REGISTER_COMPANY_FAILURE' = 'REGISTER_COMPANY_FAILURE';
@@ -44,7 +44,7 @@ const registerSuccess = (): RegisterSuccessAction => ({
   success: true,
 });
 
-export const register = (email: string): any => async (dispatch: Dispatch) => {
+export const register = (email: string): ThunkAction => async (dispatch: Dispatch) => {
   dispatch(registerRequest(email));
   try {
     await registerApi(email);

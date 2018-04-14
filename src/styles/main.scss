@@ -142,6 +142,7 @@ button {
 
   &.success,
   &.success:hover {
+    cursor: default;
     background: #000;
     color: #000;
   }

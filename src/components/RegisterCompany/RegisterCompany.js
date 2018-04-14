@@ -77,7 +77,7 @@ export default class RegisterCompany extends PureComponent<Props, State> {
               value="Bedankt, je staat op de lijst"
               type="email"
             />
-            <button disabled type="submit" className="success"><div className="checkmark draw show" /></button>
+            <button className="success"><div className="checkmark draw show" /></button>
           </form>
         ) : (
           <form onSubmit={this.onSubmit}>
