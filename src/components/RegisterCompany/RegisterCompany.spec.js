@@ -1,17 +1,24 @@
+// @flow
 import React from 'react';
 import { shallow } from 'enzyme';
 
 import RegisterCompany from './RegisterCompany';
 
+import type { Props } from './RegisterCompany';
+
 describe('<RegisterCompany />', () => {
-  const props = {
+  let wrapper;
+  const props: Props = {
     onRegisterCompany: jest.fn(),
+    isLoading: false,
   };
 
-  let wrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<RegisterCompany {...props} />);
+    const { onRegisterCompany, isLoading } = props;
+    wrapper = shallow(<RegisterCompany
+      isLoading={isLoading}
+      onRegisterCompany={onRegisterCompany}
+    />);
   });
 
   it('should contain .form', () => {

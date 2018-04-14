@@ -1,27 +1,32 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+// @flow
+import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
 import './RegisterCompany.scss';
 
-// const cx = classNames.bind(styles);
+export type OwnProps = {|
+  +error?: any,
+  +isLoading: boolean,
+  +success?: boolean,
+|}
 
-const defaultProps = {
-  error: null,
-  isLoading: false,
-  success: null,
-};
+export type DispatchProps = {|
+  onRegisterCompany: (email: string) => void,
+|}
 
-const propTypes = {
-  error: PropTypes.shape({}),
-  isLoading: PropTypes.bool,
-  success: PropTypes.bool,
-  onRegisterCompany: PropTypes.func.isRequired,
-};
+export type Props = {| ...OwnProps, ...DispatchProps |};
 
-class RegisterCompany extends Component {
-  constructor() {
-    super();
+type State = {|
+  email: string,
+|}
+
+export default class RegisterCompany extends PureComponent<Props, State> {
+  state: State;
+  onChange: (e: SyntheticInputEvent<>) => void;
+  onSubmit: (e: SyntheticEvent<>) => void;
+
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       email: '',
@@ -31,13 +36,13 @@ class RegisterCompany extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChange(event) {
-    const { name, value } = event.target;
+  onChange(e: SyntheticInputEvent<>) {
+    const { name, value } = e.target;
     this.setState({ [name]: value });
   }
 
-  onSubmit(event) {
-    event.preventDefault();
+  onSubmit(e: SyntheticEvent<>) {
+    e.preventDefault();
 
     const { onRegisterCompany } = this.props;
     const { email } = this.state;
@@ -95,8 +100,3 @@ class RegisterCompany extends Component {
     );
   }
 }
-
-RegisterCompany.defaultProps = defaultProps;
-RegisterCompany.propTypes = propTypes;
-
-export default RegisterCompany;
