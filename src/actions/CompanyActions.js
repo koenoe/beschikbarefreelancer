@@ -2,33 +2,49 @@
 import type { Dispatch as ReduxDispatch } from 'redux';
 import { registerApi } from 'utils/CompanyUtils';
 
-export type CompanyAction =
-  | {| type: 'REGISTER_COMPANY_REQUEST', email: string |}
-  | {| type: 'REGISTER_COMPANY_FAILURE', error: any |}
-  | {| type: 'REGISTER_COMPANY_SUCCESS', success: boolean |};
+type RegisterRequestAction = {|
+  type: 'REGISTER_COMPANY_REQUEST',
+  email: string
+|};
 
-export type Dispatch = ReduxDispatch<CompanyAction>;
+type RegisterFailureAction = {|
+  type: 'REGISTER_COMPANY_FAILURE',
+  error: any
+|};
+
+type RegisterSuccessAction = {|
+  type: 'REGISTER_COMPANY_SUCCESS',
+  success: boolean
+|};
+
+export type CompanyAction =
+  | RegisterRequestAction
+  | RegisterFailureAction
+  | RegisterSuccessAction;
+
+type Dispatch = ReduxDispatch<CompanyAction>;
+type ThunkAction = (dispatch: Dispatch) => any;
 
 export const REGISTER_COMPANY_REQUEST: 'REGISTER_COMPANY_REQUEST' = 'REGISTER_COMPANY_REQUEST';
 export const REGISTER_COMPANY_FAILURE: 'REGISTER_COMPANY_FAILURE' = 'REGISTER_COMPANY_FAILURE';
 export const REGISTER_COMPANY_SUCCESS: 'REGISTER_COMPANY_SUCCESS' = 'REGISTER_COMPANY_SUCCESS';
 
-const registerRequest = email => ({
+const registerRequest = (email: string): RegisterRequestAction => ({
   type: REGISTER_COMPANY_REQUEST,
   email,
 });
 
-const registerFailure = error => ({
+const registerFailure = (error: any): RegisterFailureAction => ({
   type: REGISTER_COMPANY_FAILURE,
   error,
 });
 
-const registerSuccess = () => ({
+const registerSuccess = (): RegisterSuccessAction => ({
   type: REGISTER_COMPANY_SUCCESS,
   success: true,
 });
 
-export const register = (email: string) => async (dispatch: Dispatch) => {
+export const register = (email: string): ThunkAction => async (dispatch: Dispatch) => {
   dispatch(registerRequest(email));
   try {
     await registerApi(email);
@@ -37,5 +53,3 @@ export const register = (email: string) => async (dispatch: Dispatch) => {
     dispatch(registerFailure(error));
   }
 };
-
-export default register;

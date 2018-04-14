@@ -7,32 +7,32 @@ import {
 
 import type { CompanyAction } from 'actions/CompanyActions';
 
-type State = {|
+export type registerCompanyState = {|
   +error?: any,
   +isLoading: boolean,
   +success?: boolean,
 |};
 
-const initialState: State = {
+const initialState: registerCompanyState = {
   isLoading: false,
 };
 
-export default function (state: State = initialState, action: CompanyAction) {
+export default function (
+  state: registerCompanyState = initialState,
+  action: CompanyAction,
+): registerCompanyState {
   switch (action.type) {
     case REGISTER_COMPANY_REQUEST:
       return {
-        ...state,
         isLoading: true,
       };
     case REGISTER_COMPANY_SUCCESS:
       return {
-        ...state,
         isLoading: false,
         success: action.success,
       };
     case REGISTER_COMPANY_FAILURE:
       return {
-        ...state,
         isLoading: false,
         error: action.error,
       };

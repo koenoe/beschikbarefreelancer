@@ -4,7 +4,7 @@ node_js:
   - "8.11"
 script:
   - yarn flow
-  # - yarn flow:cover
+  - yarn flow:cover
   - yarn lint
   - yarn test
 after_success:

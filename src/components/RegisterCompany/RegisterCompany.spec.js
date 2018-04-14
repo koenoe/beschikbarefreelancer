@@ -3,7 +3,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import RegisterCompany from './RegisterCompany';
-
 import type { Props } from './RegisterCompany';
 
 describe('<RegisterCompany />', () => {

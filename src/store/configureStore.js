@@ -1,3 +1,4 @@
+// @flow
 import { createStore, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
@@ -7,9 +8,16 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from 'reducers';
 
-const history = createHistory();
+import type { Store as ReduxStore } from 'redux';
+import type { BrowserHistory } from 'history/createBrowserHistory';
+import type { State } from 'reducers';
+import type { Actions } from 'actions';
 
-function configureStore(initialState) {
+export type Store = ReduxStore<State, Actions>;
+
+const history: BrowserHistory = createHistory();
+
+function configureStore(initialState?: State): Store {
   const reactRouterMiddleware = routerMiddleware(history);
   const middlewares = [
     thunk,
@@ -26,7 +34,7 @@ function configureStore(initialState) {
   );
 
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
+    module.hot.accept('reducers', (): void => {
       store.replaceReducer(rootReducer);
     });
   }

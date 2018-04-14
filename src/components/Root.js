@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import type { Store } from 'redux';
 import type { BrowserHistory } from 'history/createBrowserHistory';
 
-import Home from './Home';
+import Home from 'components/Home';
 
 type Props = {
   store: Store<any, any>, // FIXME: State, Action
