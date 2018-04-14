@@ -18,16 +18,16 @@ export type Store = ReduxStore<State, Actions>;
 const history: BrowserHistory = createHistory();
 
 function configureStore(initialState?: State): Store {
-  const reactRouterMiddleware = routerMiddleware(history);
-  const middlewares = [
+  const reactRouterMiddleware: any = routerMiddleware(history);
+  const middlewares: Array<any> = [
     thunk,
     reactRouterMiddleware,
   ];
   if (process.env.NODE_ENV === 'development') {
     middlewares.unshift(reduxImmutableStateInvariant());
   }
-  const composeEnhancers = composeWithDevTools({});
-  const store = createStore(
+  const composeEnhancers: any = composeWithDevTools({});
+  const store: Store = createStore(
     rootReducer,
     initialState,
     composeEnhancers(applyMiddleware(...middlewares)),
