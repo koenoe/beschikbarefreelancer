@@ -1,6 +1,6 @@
 // @flow
 import type { Dispatch as ReduxDispatch } from 'redux';
-import { registerApi } from 'utils/CompanyUtils';
+import { register as registerApi } from 'utils/CompanyUtils';
 
 type RegisterRequestAction = {|
   type: 'REGISTER_COMPANY_REQUEST',

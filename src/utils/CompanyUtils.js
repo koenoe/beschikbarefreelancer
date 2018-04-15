@@ -1,3 +1,4 @@
+// @flow
 import querystring from 'querystring';
 
 import {
@@ -8,8 +9,8 @@ import {
 import { callApi } from './ApiUtils';
 
 
-const generateSubscribeLink = async () => {
-  const options = {
+const generateSubscribeLink: Function = async () => {
+  const options: RequestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: `data=${CM_COMPANY_DATA_ID}`,
@@ -18,18 +19,18 @@ const generateSubscribeLink = async () => {
   return result;
 };
 
-export const registerApi = async (email) => {
-  const form = {};
+export const register: Function = async (email: string) => {
+  const form: Object = {};
   form[CM_COMPANY_FIELD_EMAIL] = email;
 
-  const options = {
+  const options: RequestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: querystring.stringify(form),
   };
 
-  const subscribeLink = await generateSubscribeLink();
+  const subscribeLink: string = await generateSubscribeLink();
   await callApi(subscribeLink, options);
 };
 
-export default registerApi;
+export default register;
