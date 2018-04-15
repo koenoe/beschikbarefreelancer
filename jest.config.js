@@ -9,4 +9,7 @@ module.exports = {
   ],
   modulePaths: ['src'],
   verbose: true,
+  collectCoverageFrom: [
+    'src/**/*.js',
+  ],
 };
