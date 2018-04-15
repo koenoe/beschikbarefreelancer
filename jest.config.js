@@ -8,4 +8,5 @@ module.exports = {
     './src/test-setup.js',
   ],
   modulePaths: ['src'],
+  verbose: true,
 };

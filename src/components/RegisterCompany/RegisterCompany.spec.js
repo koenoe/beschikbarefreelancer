@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import RegisterCompany from './RegisterCompany';
 import type { Props } from './RegisterCompany';
 
-describe('<RegisterCompany />', () => {
+describe('Components: RegisterCompany', () => {
   let wrapper;
   const props: Props = {
     onRegisterCompany: jest.fn(),

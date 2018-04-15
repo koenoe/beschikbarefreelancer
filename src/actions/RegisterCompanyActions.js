@@ -17,12 +17,12 @@ type RegisterSuccessAction = {|
   success: boolean
 |};
 
-export type CompanyAction =
+export type RegisterCompanyAction =
   | RegisterRequestAction
   | RegisterFailureAction
   | RegisterSuccessAction;
 
-type Dispatch = ReduxDispatch<CompanyAction>;
+type Dispatch = ReduxDispatch<RegisterCompanyAction>;
 type ThunkAction = (dispatch: Dispatch) => any;
 
 export const REGISTER_COMPANY_REQUEST: 'REGISTER_COMPANY_REQUEST' = 'REGISTER_COMPANY_REQUEST';

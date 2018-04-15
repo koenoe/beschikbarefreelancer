@@ -5,7 +5,7 @@ import { createSelector } from 'reselect';
 
 import type { ComponentType } from 'react';
 
-import { register } from 'actions/CompanyActions';
+import { register } from 'actions/RegisterCompanyActions';
 import RegisterCompany from 'components/RegisterCompany';
 import { registerCompanySelector } from 'selectors/registerCompany';
 

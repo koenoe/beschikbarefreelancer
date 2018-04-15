@@ -1,4 +1,4 @@
 // @flow
-import type { CompanyAction } from 'actions/CompanyActions';
+import type { RegisterCompanyAction } from 'actions/RegisterCompanyActions';
 
-export type Actions = CompanyAction;
+export type Actions = RegisterCompanyAction;

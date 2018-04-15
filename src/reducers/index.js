@@ -2,16 +2,11 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import registerCompany from 'reducers/registerCompany';
-// import type { registerCompanyState } from './registerCompany';
-
-// type Reducers = {|
-//   registerCompany: registerCompanyState,
-//   routing: routerReducer,
-// |};
+import registerCompanyReducer from 'reducers/registerCompany';
 
 const reducers: any = combineReducers({
-  registerCompany,
+  registrationCompany: registerCompanyReducer,
+  // registrationFreelancer: {},
   routing: routerReducer,
 });
 

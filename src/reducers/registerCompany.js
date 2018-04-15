@@ -3,9 +3,9 @@ import {
   REGISTER_COMPANY_REQUEST,
   REGISTER_COMPANY_FAILURE,
   REGISTER_COMPANY_SUCCESS,
-} from 'actions/CompanyActions';
+} from 'actions/RegisterCompanyActions';
 
-import type { CompanyAction } from 'actions/CompanyActions';
+import type { RegisterCompanyAction } from 'actions/RegisterCompanyActions';
 
 export type registerCompanyState = {|
   +error?: any,
@@ -19,7 +19,7 @@ const initialState: registerCompanyState = {
 
 export default function (
   state: registerCompanyState = initialState,
-  action: CompanyAction,
+  action: RegisterCompanyAction,
 ): registerCompanyState {
   switch (action.type) {
     case REGISTER_COMPANY_REQUEST:

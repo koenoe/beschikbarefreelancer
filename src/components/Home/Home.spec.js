@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import RegisterCompanyContainer from 'containers/RegisterCompanyContainer';
 import Home from './Home';
 
-describe('<Home />', () => {
+describe('Components: Home', () => {
   const props:any = {};
 
   let wrapper;
