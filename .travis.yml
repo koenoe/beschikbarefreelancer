@@ -6,6 +6,6 @@ script:
   - yarn flow
   - yarn flow:cover
   - yarn lint
-  - yarn test
+  - yarn test --updateSnapshot
 after_success:
   - yarn test:coveralls
