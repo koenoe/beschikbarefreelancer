@@ -10,7 +10,7 @@ const mockState: State = {
 };
 
 describe('Selectors: registerCompany', () => {
-  it('should return login.authenticated as boolean', () => {
+  it('should return the `registerCompanyState`', () => {
     const expected: registerCompanyState = mockState.registrationCompany;
     expect(registerCompanySelector(mockState)).toBe(expected);
   });
