@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reducer: registerCompany should have an \`error\` when \`REGISTER_COMPANY_FAILURE\` 1`] = `
+Object {
+  "error": [Error: fail whale],
+  "isLoading": false,
+}
+`;
+
+exports[`Reducer: registerCompany should set \`isLoading\` to true when \`REGISTER_COMPANY_REQUEST\` 1`] = `
+Object {
+  "isLoading": true,
+}
+`;
+
+exports[`Reducer: registerCompany should set \`success\` to true when \`REGISTER_COMPANY_SUCCESS\` 1`] = `
+Object {
+  "isLoading": false,
+  "success": true,
+}
+`;

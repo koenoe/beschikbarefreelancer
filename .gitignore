@@ -37,6 +37,3 @@ build/Release
 
 # Mac files
 .DS_Store
-
-# Jest snapshots
-*__snapshots__
