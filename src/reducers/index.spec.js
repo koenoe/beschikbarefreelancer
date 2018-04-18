@@ -1,21 +1,15 @@
 // @flow
-import { createStore } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import rootReducer from 'reducers';
 import registerCompanyReducer from 'reducers/registerCompany';
+import { configureStore } from 'store/configureStore';
 
 import type { RegisterCompanyAction } from 'actions/RegisterCompanyActions';
 import type { Store } from 'store/configureStore';
 
 describe('Reducer: index', () => {
-  let store: Store;
+  const store: Store = configureStore();
 
-  beforeEach(() => {
-    store = createStore(rootReducer);
-  });
-
-  //
   it('should delegate a `routing` action to the `routerReducer` reducer', () => {
     const action: any = {
       type: '@@router/LOCATION_CHANGE',
@@ -30,6 +24,7 @@ describe('Reducer: index', () => {
     expect(store.getState().routing)
       .toEqual(routerReducer(undefined, action));
   });
+
   it('should delegate a `registerCompany` action to the `registerCompany` reducer', () => {
     const action: RegisterCompanyAction = {
       type: 'REGISTER_COMPANY_REQUEST',
