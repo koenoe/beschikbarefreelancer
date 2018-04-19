@@ -12,7 +12,7 @@ import { registerCompanySelector } from 'selectors/registerCompany';
 import type { State } from 'reducers';
 import type { OwnProps, DispatchProps } from 'components/RegisterCompany/RegisterCompany';
 
-const mapStateToProps: ((State) => OwnProps) = createSelector(
+export const mapStateToProps: ((State) => OwnProps) = createSelector(
   registerCompanySelector,
   ({
     error,
