@@ -1,6 +1,6 @@
 {
   "name": "beschikbarefreelancer",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "",
   "license": "MIT",
   "repository": "git+https://github.com/koenoe/beschikbarefreelancer.git",
@@ -29,6 +29,7 @@
     "history": "4.7.2",
     "react": "16.3.2",
     "react-dom": "16.3.2",
+    "react-facebook-pixel": "0.1.1",
     "react-hot-loader": "4.1.0",
     "react-redux": "5.0.7",
     "react-router-dom": "4.2.2",

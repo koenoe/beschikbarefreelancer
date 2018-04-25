@@ -7,13 +7,14 @@ import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from 'reducers';
+import trackingMiddleware from 'middleware/tracking';
 
 import type { Store as ReduxStore } from 'redux';
 import type { BrowserHistory } from 'history/createBrowserHistory';
 import type { State } from 'reducers';
-import type { Actions } from 'actions';
+import type { Action } from 'actions';
 
-export type Store = ReduxStore<State, Actions>;
+export type Store = ReduxStore<State, Action>;
 
 const history: BrowserHistory = createHistory();
 
@@ -22,6 +23,7 @@ function configureStore(initialState?: State): Store {
   const middlewares: Array<any> = [
     thunk,
     reactRouterMiddleware,
+    trackingMiddleware,
   ];
   if (process.env.NODE_ENV === 'development') {
     middlewares.unshift(reduxImmutableStateInvariant());
