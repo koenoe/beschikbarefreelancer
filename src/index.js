@@ -4,13 +4,13 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import type { Store } from 'redux';
+import { configureStore, history } from 'store/configureStore';
+import Root from 'components/Root';
+import 'styles/main.scss';
 
-import { configureStore, history } from './store/configureStore';
-import Root from './components/Root';
-import './styles/main.scss';
+import type { Store } from 'store/configureStore';
 
-const store: Store<any, any> = configureStore(); // FIXME: State, Action
+const store: Store = configureStore();
 
 render(
   <AppContainer>
@@ -20,8 +20,8 @@ render(
 );
 
 if (module.hot) {
-  module.hot.accept('./components/Root', () => {
-    const NewRoot = require('./components/Root').default; // eslint-disable-line global-require
+  module.hot.accept('components/Root', (): void => {
+    const NewRoot: any = require('components/Root').default; // eslint-disable-line global-require
     render(
       <AppContainer>
         <NewRoot store={store} history={history} />

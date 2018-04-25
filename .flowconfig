@@ -12,6 +12,8 @@ flow
 [lints]
 
 [options]
+; Folders
+module.name_mapper='^\(\/?.*\)$' -> '<PROJECT_ROOT>/src/\1'
 ; Extensions
 module.file_ext=.css
 module.file_ext=.scss

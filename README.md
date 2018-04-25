@@ -1,7 +1,5 @@
 # beschikbarefreelancer.nl
 
-## Notes
-A Git commit template I personally like to follow: [link](https://gist.github.com/adeekshith/cd4c95a064977cdc6c50)
 ### Watchman
 Jest uses Watchman by default, to install: `brew install watchman`
 ### EditorConfig
@@ -21,7 +19,7 @@ yarn start
 ```
 ### Build app
 ```
-yarn run build
+yarn build
 ```
 ### Test app
 ```

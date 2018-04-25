@@ -25,7 +25,16 @@
     "jest": true
   },
   "globals": {},
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.dev.js"
+      }
+    }
+  },
   "rules": {
+    "import/first": 0,
+    "import/no-extraneous-dependencies": 0,
     "no-use-before-define": [
       2,
       {
@@ -41,6 +50,17 @@
         ]
       }
     ],
-    "import/no-extraneous-dependencies": 0
+    "react/sort-comp": [
+      1,
+      {
+        "order": [
+          "type-annotations",
+          "constructor",
+          "lifecycle",
+          "everything-else",
+          "render"
+        ]
+      }
+    ]
   }
 }

@@ -1,24 +1,18 @@
-export const callApi = (url, options) =>
+// @flow
+export const callApi: Function = (url: string, options: RequestOptions) =>
   fetch(url, options)
-    .then(
-      (response) => {
-        if (!response.ok) {
-          return Promise.reject(response.statusText);
-        }
-        const contentType = response.headers.get('Content-Type') || '';
-        if (contentType.indexOf('json') !== -1) {
-          return response.json();
-        } else if (contentType.indexOf('text') !== -1) {
-          return response.text();
-        }
-        return response;
-      },
-      error => Promise.reject(error),
-    )
-    .then(
-      result => ({ result }),
-      error => ({ error }),
-    )
-    .catch(error => ({ error }));
+    .then((response: Response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      const contentType: string = response.headers.get('Content-Type') || '';
+      if (contentType.indexOf('json') !== -1) {
+        return response.json();
+      } else if (contentType.indexOf('text') !== -1) {
+        return response.text();
+      }
+      return response;
+    })
+    .then(result => ({ result }: any));
 
 export default callApi;

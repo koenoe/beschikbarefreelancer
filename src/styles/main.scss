@@ -1,4 +1,5 @@
-@import "shared";
+@import "variables";
+@import "bootstrap/scss/bootstrap";
 
 html, body {
   font-family: $font-stack;
@@ -51,6 +52,10 @@ img.mobile {
 
 #content.succes {
   text-align: center;
+
+  p {
+    max-width: 100%;
+  }
 }
 
 h1 {
@@ -77,10 +82,6 @@ p {
   line-height: 1.5em;
   max-width: 1000px;
   margin: 0 0 2em 0;
-}
-
-#content.succes p{
-  max-width: 100%;
 }
 
 form {
@@ -141,17 +142,15 @@ button {
 
   &.success,
   &.success:hover {
+    cursor: default;
     background: #000;
     color: #000;
   }
 
   &:disabled {
-    cursor: not-allowed;
+    cursor: progress;
   }
 }
-
-$check-height: 1em;
-$check-width: 0.5em;
 
 .checkmark {
   display: none;

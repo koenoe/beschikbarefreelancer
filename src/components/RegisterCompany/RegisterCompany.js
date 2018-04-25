@@ -1,23 +1,32 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+// @flow
+import React, { PureComponent } from 'react';
+import classNames from 'classnames';
+
 import './RegisterCompany.scss';
 
-const defaultProps = {
-  error: null,
-  isLoading: false,
-  success: null,
-};
+export type OwnProps = {|
+  +error?: any,
+  +isLoading: boolean,
+  +success?: boolean,
+|}
 
-const propTypes = {
-  error: PropTypes.shape({}),
-  isLoading: PropTypes.bool,
-  success: PropTypes.bool,
-  onRegisterCompany: PropTypes.func.isRequired,
-};
+export type DispatchProps = {|
+  onRegisterCompany: (email: string) => void,
+|}
 
-class RegisterCompany extends Component {
-  constructor() {
-    super();
+export type Props = {| ...OwnProps, ...DispatchProps |};
+
+type State = {|
+  email: string,
+|}
+
+export default class RegisterCompany extends PureComponent<Props, State> {
+  state: State;
+  onChange: (e: SyntheticInputEvent<>) => void;
+  onSubmit: (e: SyntheticEvent<>) => void;
+
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       email: '',
@@ -27,13 +36,13 @@ class RegisterCompany extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChange(event) {
-    const { name, value } = event.target;
+  onChange(e: SyntheticInputEvent<>) {
+    const { name, value } = e.target;
     this.setState({ [name]: value });
   }
 
-  onSubmit(event) {
-    event.preventDefault();
+  onSubmit(e: SyntheticEvent<>) {
+    e.preventDefault();
 
     const { onRegisterCompany } = this.props;
     const { email } = this.state;
@@ -52,7 +61,14 @@ class RegisterCompany extends Component {
     } = this.props;
 
     return (
-      <div className={`form ${isLoading ? 'form-is-loading' : ''}`}>
+      <div className={
+        classNames({
+          registerCompany: true,
+          form: true,
+          'form-is-loading': isLoading,
+        })
+      }
+      >
         <h4>Ontvang het laatste overzicht met beschikbare freelancers</h4>
         {success ? (
           // REGISTER_COMPANY_SUCCESS
@@ -61,7 +77,7 @@ class RegisterCompany extends Component {
               value="Bedankt, je staat op de lijst"
               type="email"
             />
-            <button disabled type="submit" className="success"><div className="checkmark draw show" /></button>
+            <button className="success"><div className="checkmark draw show" /></button>
           </form>
         ) : (
           <form onSubmit={this.onSubmit}>
@@ -84,8 +100,3 @@ class RegisterCompany extends Component {
     );
   }
 }
-
-RegisterCompany.defaultProps = defaultProps;
-RegisterCompany.propTypes = propTypes;
-
-export default RegisterCompany;

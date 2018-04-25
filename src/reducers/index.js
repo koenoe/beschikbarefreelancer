@@ -1,11 +1,17 @@
+// @flow
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import registerCompany from './registerCompany';
+import registerCompanyReducer from 'reducers/registerCompany';
 
-const rootReducer = combineReducers({
-  registerCompany,
+const reducers: any = combineReducers({
+  registrationCompany: registerCompanyReducer,
+  // registrationFreelancer: {},
   routing: routerReducer,
 });
 
-export default rootReducer;
+export default reducers;
+
+type $ExtractFunctionReturn = <V>(v: (...args: any) => V) => V;
+type Reducers = typeof reducers;
+export type State = $ObjMap<Reducers, $ExtractFunctionReturn>;

@@ -7,4 +7,15 @@ module.exports = {
     'raf/polyfill',
     './src/test-setup.js',
   ],
+  modulePaths: ['src'],
+  verbose: true,
+  collectCoverageFrom: [
+    'src/**/*.js',
+    '!src/test-utils/*.js',
+    '!src/test-setup.js',
+    '!src/constants/**/*.js',
+    '!src/components/**/index.js',
+    '!src/store/configureStore.js',
+    '!src/index.js',
+  ],
 };

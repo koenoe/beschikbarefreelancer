@@ -1,25 +1,34 @@
-import React from 'react';
+// @flow
+// import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 
-import { register } from '../actions/CompanyActions';
-import RegisterCompany from '../components/RegisterCompany';
+import type { ComponentType } from 'react';
 
-const RegisterCompanyContainer = props => <RegisterCompany {...props} />;
+import { register } from 'actions/RegisterCompanyActions';
+import RegisterCompany from 'components/RegisterCompany';
+import { registerCompanySelector } from 'selectors/registerCompany';
 
-const mapStateToProps = (state) => {
-  const {
+import type { State } from 'reducers';
+import type { OwnProps, DispatchProps } from 'components/RegisterCompany/RegisterCompany';
+
+export const mapStateToProps: ((State) => OwnProps) = createSelector(
+  registerCompanySelector,
+  ({
     error,
     isLoading,
     success,
-  } = state.registerCompany;
-
-  return {
+  }: OwnProps) => ({
     error,
     isLoading,
     success,
-  };
-};
+  }),
+);
 
-export default connect(mapStateToProps, {
-  onRegisterCompany: register,
-})(RegisterCompanyContainer);
+const mapDispatchToProps = (dispatch: Dispatch<*>): DispatchProps => ({
+  onRegisterCompany: (email: string) => dispatch(register(email)),
+});
+
+export default (
+  connect(mapStateToProps, mapDispatchToProps)(RegisterCompany): ComponentType<*>
+);

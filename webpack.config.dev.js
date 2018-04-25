@@ -1,22 +1,30 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+
+const projectRoot = path.resolve(__dirname);
 
 module.exports = {
   mode: 'development',
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
+    modules: [
+      // projectRoot,
+      path.join(projectRoot, 'src'),
+      path.join(projectRoot, 'node_modules'),
+    ],
   },
   devtool: 'cheap-module-eval-source-map', // more info:https://webpack.js.org/guides/development/#using-source-maps and https://webpack.js.org/configuration/devtool/
   entry: [
     'react-hot-loader/patch',
-    path.resolve(__dirname, 'src/index'), // Defining path seems necessary for this to work consistently on Windows machines.
+    path.join(projectRoot, 'src', 'index.js'),
   ],
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(projectRoot, 'dist'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -25,10 +33,16 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development'), // Tells React to build in either dev or prod modes. https://facebook.github.io/react/downloads.html (See bottom)
       __DEV__: true,
     }),
-    // new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    // Generate an external css file with a hash in the filename
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
     new HtmlWebpackPlugin({ // Create HTML file that includes references to bundled CSS and JS.
-      template: 'src/index.html',
+      template: path.join(projectRoot, 'src', 'index.html'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -99,28 +113,48 @@ module.exports = {
         ],
       },
       {
-        test: /(\.css|\.scss|\.sass)$/,
+        test: /\.(scss|css)$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-modules-flow-types-loader',
           {
             loader: 'css-loader',
             options: {
+              // modules: true,
               sourceMap: true,
             },
-          }, {
+          },
+          {
             loader: 'postcss-loader',
             options: {
+              sourceMap: true,
+              autoprefixer: {
+                browsers: ['last 2 versions'],
+              },
               plugins: () => [
                 autoprefixer,
               ],
-              sourceMap: true,
             },
-          }, {
+          },
+          {
             loader: 'sass-loader',
             options: {
-              includePaths: [path.resolve(__dirname, 'src', 'scss')],
               sourceMap: true,
+              includePaths: [
+                path.join(projectRoot, 'src'),
+                path.join(projectRoot, 'node_modules'),
+              ],
+            },
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                './node_modules/bootstrap/scss/_functions.scss',
+                './node_modules/bootstrap/scss/_variables.scss',
+                './node_modules/bootstrap/scss/_mixins.scss',
+                './src/styles/variables.scss',
+              ],
             },
           },
         ],
