@@ -3,6 +3,7 @@ import 'babel-polyfill';
 import * as React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import ReactPixel from 'react-facebook-pixel';
 
 import { configureStore, history } from 'store/configureStore';
 import Root from 'components/Root';
@@ -30,3 +31,11 @@ if (module.hot) {
     );
   });
 }
+
+// FIXME: Facebook pixel initialisation somewhere else
+ReactPixel.init('1791351347839511', {}, {
+  debug: process.env.NODE_ENV === 'development',
+  autoConfig: true,
+});
+ReactPixel.pageView();
+ReactPixel.fbq('track', 'PageView');
