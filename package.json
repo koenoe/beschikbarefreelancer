@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production webpack -p --config ./webpack.config.prod.js",
     "build:open": "yarn build && http-server ./dist -p 4000 -o",
     "clean-dist": "rimraf ./dist && mkdir dist",
-    "deploy": "gh-pages -d dist",
+    "deploy": "yarn build && gh-pages -d dist",
     "flow": "flow check",
     "flow:cover": "flow-coverage-report -i 'src/**/*.js'",
     "flow:watch": "flow-bro watch",
