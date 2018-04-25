@@ -1,6 +1,6 @@
 {
   "name": "beschikbarefreelancer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "license": "MIT",
   "repository": "git+https://github.com/koenoe/beschikbarefreelancer.git",
@@ -8,8 +8,7 @@
     "build": "NODE_ENV=production webpack -p --config ./webpack.config.prod.js",
     "build:open": "yarn build && http-server ./dist -p 4000 -o",
     "clean-dist": "rimraf ./dist && mkdir dist",
-    "deploy": "yarn build && gh-pages-deploy",
-    "deploy:clean": "rimraf coverage flow flow-typed src .* jest.config.js README.md yarn* webpack* package.json",
+    "deploy": "gh-pages -d dist",
     "flow": "flow check",
     "flow:cover": "flow-coverage-report -i 'src/**/*.js'",
     "flow:watch": "flow-bro watch",
@@ -22,14 +21,6 @@
     "test:cover": "yarn test --coverage",
     "test:coveralls": "yarn test:cover && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "jest --watch"
-  },
-  "gh-pages-deploy": {
-    "staticpath": "dist",
-    "cname": "beschikbarefreelancer.nl",
-    "post": [
-      "deploy:clean"
-    ],
-    "noprompt": true
   },
   "dependencies": {
     "babel-polyfill": "6.26.0",
@@ -81,7 +72,6 @@
     "flow-bro": "0.4.3",
     "flow-coverage-report": "0.5.0",
     "gh-pages": "1.1.0",
-    "gh-pages-deploy": "0.4.2",
     "html-webpack-plugin": "3.2.0",
     "http-server": "0.11.1",
     "identity-obj-proxy": "3.0.0",
