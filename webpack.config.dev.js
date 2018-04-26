@@ -10,7 +10,7 @@ const projectRoot = path.resolve(__dirname);
 module.exports = {
   mode: 'development',
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json'],
+    extensions: ['*', '.js'],
     modules: [
       // projectRoot,
       path.join(projectRoot, 'src'),
@@ -113,14 +113,50 @@ module.exports = {
         ],
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.?global.(scss|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-modules-flow-types-loader',
           {
             loader: 'css-loader',
             options: {
-              // modules: true,
+              modules: false,
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              autoprefixer: {
+                browsers: ['last 2 versions'],
+              },
+              plugins: () => [
+                autoprefixer,
+              ],
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              includePaths: [
+                path.join(projectRoot, 'src'),
+                path.join(projectRoot, 'node_modules'),
+              ],
+            },
+          },
+        ],
+      },
+      {
+        test: /^((?!\.?global).)*(scss|css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-modules-flow-types-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
               sourceMap: true,
             },
           },

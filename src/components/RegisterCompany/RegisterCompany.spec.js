@@ -16,7 +16,7 @@ describe('Components: RegisterCompany', () => {
     wrapper = shallow(<RegisterCompany {...(props: any)} />);
   });
 
-  it('should contain .form', () => {
-    expect(wrapper.find('.form').length).toEqual(1);
+  it('should contain form', () => {
+    expect(wrapper.find('form').length).toEqual(1);
   });
 });

@@ -1,8 +1,8 @@
 // @flow
 import React, { PureComponent } from 'react';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 
-import './RegisterCompany.scss';
+import styles from './RegisterCompany.scss';
 
 export type OwnProps = {|
   +error?: any,
@@ -61,14 +61,7 @@ export default class RegisterCompany extends PureComponent<Props, State> {
     } = this.props;
 
     return (
-      <div className={
-        classNames({
-          registerCompany: true,
-          form: true,
-          'form-is-loading': isLoading,
-        })
-      }
-      >
+      <div className={styles.registerCompany}>
         <h4>Ontvang het laatste overzicht met beschikbare freelancers</h4>
         {success ? (
           // REGISTER_COMPANY_SUCCESS
@@ -89,7 +82,9 @@ export default class RegisterCompany extends PureComponent<Props, State> {
               placeholder="Jouw email"
               required
             />
-            <button disabled={isLoading} type="submit"><div className="checkmark draw" />Aanmelden</button>
+            <button disabled={isLoading} type="submit" className="btn btn-primary">
+              <div className="checkmark draw" />Aanmelden
+            </button>
           </form>
         )}
         {error &&

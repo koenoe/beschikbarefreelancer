@@ -1,5 +1,7 @@
 // @flow
+import 'styles/global.scss';
 import 'babel-polyfill';
+
 import * as React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
@@ -7,9 +9,9 @@ import ReactPixel from 'react-facebook-pixel';
 
 import { configureStore, history } from 'store/configureStore';
 import Root from 'components/Root';
-import 'styles/main.scss';
 
 import type { Store } from 'store/configureStore';
+
 
 const store: Store = configureStore();
 

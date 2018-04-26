@@ -17,11 +17,7 @@ type Props = {
 export default ({ store, history }: Props) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div id="wrapper">
-        <div id="content">
-          <Route path="/" component={Home} />
-        </div>
-      </div>
+      <Route path="/" component={Home} />
     </ConnectedRouter>
   </Provider>
 );
