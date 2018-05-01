@@ -3,17 +3,17 @@ import type { Dispatch as ReduxDispatch } from 'redux';
 import { register as registerApi } from 'utils/CompanyUtils';
 
 type RegisterRequestAction = {|
-  type: 'REGISTER_COMPANY_REQUEST',
+  type: 'registration/COMPANY_REQUEST',
   email: string
 |};
 
 type RegisterFailureAction = {|
-  type: 'REGISTER_COMPANY_FAILURE',
+  type: 'registration/COMPANY_FAILURE',
   error: any
 |};
 
 type RegisterSuccessAction = {|
-  type: 'REGISTER_COMPANY_SUCCESS',
+  type: 'registration/COMPANY_SUCCESS',
   success: boolean
 |};
 
@@ -25,9 +25,9 @@ export type RegisterCompanyAction =
 type Dispatch = ReduxDispatch<RegisterCompanyAction>;
 type ThunkAction = (dispatch: Dispatch) => any;
 
-export const REGISTER_COMPANY_REQUEST: 'REGISTER_COMPANY_REQUEST' = 'REGISTER_COMPANY_REQUEST';
-export const REGISTER_COMPANY_FAILURE: 'REGISTER_COMPANY_FAILURE' = 'REGISTER_COMPANY_FAILURE';
-export const REGISTER_COMPANY_SUCCESS: 'REGISTER_COMPANY_SUCCESS' = 'REGISTER_COMPANY_SUCCESS';
+export const REGISTER_COMPANY_REQUEST: 'registration/COMPANY_REQUEST' = 'registration/COMPANY_REQUEST';
+export const REGISTER_COMPANY_FAILURE: 'registration/COMPANY_FAILURE' = 'registration/COMPANY_FAILURE';
+export const REGISTER_COMPANY_SUCCESS: 'registration/COMPANY_SUCCESS' = 'registration/COMPANY_SUCCESS';
 
 const registerRequest = (email: string): RegisterRequestAction => ({
   type: REGISTER_COMPANY_REQUEST,

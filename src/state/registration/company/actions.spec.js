@@ -1,23 +1,23 @@
 // @flow
 import waitForActions from 'redux-mock-store-await-actions';
 import mockStore from 'test-utils/mockStore';
-import { register } from 'actions/RegisterCompanyActions';
+import { register } from 'state/registration/company/actions';
 
 import type { Store } from 'test-utils/mockStore';
-import type { RegisterCompanyAction } from 'actions/RegisterCompanyActions';
+import type { RegisterCompanyAction } from 'state/registration/company/actions';
 
-describe('Actions: RegisterCompanyActions', () => {
+describe('Registration actions: company', () => {
   const store: Store = mockStore();
   const registerRequestAction: RegisterCompanyAction = {
-    type: 'REGISTER_COMPANY_REQUEST',
+    type: 'registration/COMPANY_REQUEST',
     email: 'test@koenromers.com',
   };
   const registerSuccessAction: RegisterCompanyAction = {
-    type: 'REGISTER_COMPANY_SUCCESS',
+    type: 'registration/COMPANY_SUCCESS',
     success: true,
   };
   const registerFailureAction: RegisterCompanyAction = {
-    type: 'REGISTER_COMPANY_FAILURE',
+    type: 'registration/COMPANY_FAILURE',
     error: new Error('fail whale'),
   };
 

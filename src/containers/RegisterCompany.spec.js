@@ -1,11 +1,13 @@
 // @flow
-import { mapStateToProps } from 'containers/RegisterCompanyContainer';
-import type { State } from 'reducers';
+import { mapStateToProps } from 'containers/RegisterCompany';
+import type { State } from 'state/reducers';
 
 describe('Containers: RegisterCompany', () => {
   const mockState: State = {
-    registrationCompany: {
-      isLoading: true,
+    registration: {
+      company: {
+        isLoading: true,
+      },
     },
   };
   it('should map the state to correct props', () => {
