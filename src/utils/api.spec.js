@@ -1,5 +1,5 @@
 // @flow
-import { callApi } from 'utils/ApiUtils';
+import { callApi } from 'utils/api';
 
 describe('Utils: ApiUtils', () => {
   describe('when calling `callApi`', () => {
