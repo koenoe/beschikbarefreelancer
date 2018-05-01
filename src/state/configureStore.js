@@ -6,13 +6,13 @@ import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import rootReducer from 'reducers';
-import trackingMiddleware from 'middleware/tracking';
+import rootReducer from 'state/reducers';
+import trackingMiddleware from 'state/middleware/tracking';
 
 import type { Store as ReduxStore } from 'redux';
 import type { BrowserHistory } from 'history/createBrowserHistory';
-import type { State } from 'reducers';
-import type { Action } from 'actions';
+import type { State } from 'state/reducers';
+import type { Action } from 'state/actions';
 
 export type Store = ReduxStore<State, Action>;
 
@@ -36,7 +36,7 @@ function configureStore(initialState?: State): Store {
   );
 
   if (module.hot) {
-    module.hot.accept('reducers', (): void => {
+    module.hot.accept('state/reducers', (): void => {
       store.replaceReducer(rootReducer);
     });
   }

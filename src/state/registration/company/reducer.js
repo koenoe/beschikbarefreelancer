@@ -3,24 +3,24 @@ import {
   REGISTER_COMPANY_REQUEST,
   REGISTER_COMPANY_FAILURE,
   REGISTER_COMPANY_SUCCESS,
-} from 'actions/RegisterCompanyActions';
+} from 'state/registration/company/actions';
 
-import type { RegisterCompanyAction } from 'actions/RegisterCompanyActions';
+import type { RegisterCompanyAction } from 'state/registration/company/actions';
 
-export type registerCompanyState = {|
+export type State = {|
   +error?: any,
   +isLoading: boolean,
   +success?: boolean,
 |};
 
-const initialState: registerCompanyState = {
+const initialState: State = {
   isLoading: false,
 };
 
 export default function (
-  state: registerCompanyState = initialState,
+  state: State = initialState,
   action: RegisterCompanyAction,
-): registerCompanyState {
+): State {
   switch (action.type) {
     case REGISTER_COMPANY_REQUEST:
       return {
