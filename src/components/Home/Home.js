@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 
-import RegisterCompanyContainer from 'containers/RegisterCompanyContainer';
+import RegisterCompanyContainer from 'containers/RegisterCompany';
 import illustration from './img/illustration.png';
 // import './Home.scss';
 

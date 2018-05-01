@@ -7,10 +7,10 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import ReactPixel from 'react-facebook-pixel';
 
-import { configureStore, history } from 'store/configureStore';
+import { configureStore, history } from 'state/configureStore';
 import Root from 'components/Root';
 
-import type { Store } from 'store/configureStore';
+import type { Store } from 'state/configureStore';
 
 
 const store: Store = configureStore();

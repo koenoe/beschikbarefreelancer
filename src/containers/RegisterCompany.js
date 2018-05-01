@@ -5,15 +5,15 @@ import { createSelector } from 'reselect';
 
 import type { ComponentType } from 'react';
 
-import { register } from 'actions/RegisterCompanyActions';
+import { register } from 'state/registration/company/actions';
 import RegisterCompany from 'components/RegisterCompany';
-import { registerCompanySelector } from 'selectors/registerCompany';
+import { company as companySelector } from 'state/registration/selectors';
 
-import type { State } from 'reducers';
+import type { State } from 'state/reducers';
 import type { OwnProps, DispatchProps } from 'components/RegisterCompany/RegisterCompany';
 
 export const mapStateToProps: ((State) => OwnProps) = createSelector(
-  registerCompanySelector,
+  companySelector,
   ({
     error,
     isLoading,

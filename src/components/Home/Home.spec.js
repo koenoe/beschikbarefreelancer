@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import RegisterCompanyContainer from 'containers/RegisterCompanyContainer';
+import RegisterCompanyContainer from 'containers/RegisterCompany';
 import Home from './Home';
 
 describe('Components: Home', () => {

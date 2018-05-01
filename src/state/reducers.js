@@ -2,11 +2,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import registerCompanyReducer from 'reducers/registerCompany';
+import registrationReducer from 'state/registration/reducer';
 
 const reducers: any = combineReducers({
-  registrationCompany: registerCompanyReducer,
-  // registrationFreelancer: {},
+  registration: registrationReducer,
   routing: routerReducer,
 });
 

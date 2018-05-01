@@ -15,7 +15,7 @@ module.exports = {
     '!src/test-setup.js',
     '!src/constants/**/*.js',
     '!src/components/**/index.js',
-    '!src/store/configureStore.js',
+    '!src/state/configureStore.js',
     '!src/index.js',
   ],
 };

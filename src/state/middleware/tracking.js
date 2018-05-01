@@ -1,8 +1,8 @@
 // @flow
 import ReactPixel from 'react-facebook-pixel';
-import { REGISTER_COMPANY_SUCCESS } from 'actions/RegisterCompanyActions';
+import { REGISTER_COMPANY_SUCCESS } from 'state/registration/company/actions';
 
-import type { Action } from 'actions';
+import type { Action } from 'state/actions';
 
 const eventsMapper = (action: Action) => {
   switch (action.type) {
